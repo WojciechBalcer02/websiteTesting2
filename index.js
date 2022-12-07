@@ -1,0 +1,1 @@
+console.log('test skryptów na stronie')

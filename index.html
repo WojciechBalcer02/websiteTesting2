@@ -7,6 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Witaj świecie</h1>
+    
+    <table id="telefony"></table>
+    <script>
+        (async()=>{
+            const req = await fetch("http://localhost:3000/telefony/")
+            const json = await res.json()
+            let tabelka = document.querySelector('#telefony')
+            let tr
+            let td
+            //nagłówek
+            tr = document.createElement('tr')
+            th = document.createElement('th')
+            th.innerText = "marka"
+            tr.appendChild(th)
+            th = document.createElement()
+        })
+    </script>
 </body>
 </html>
