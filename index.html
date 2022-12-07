@@ -11,17 +11,40 @@
     <table id="telefony"></table>
     <script>
         (async()=>{
-            const req = await fetch("http://localhost:3000/telefony/")
-            const json = await res.json()
-            let tabelka = document.querySelector('#telefony')
-            let tr
-            let td
-            //nagłówek
-            tr = document.createElement('tr')
-            th = document.createElement('th')
-            th.innerText = "marka"
-            tr.appendChild(th)
-            th = document.createElement()
+            fetch("http://localhost:3000/telefony/", {mode:'no-cors'})
+            //.then(res => res.json())
+            .then(res=>{
+                
+                let tabelka = document.querySelector('#telefony')
+                let tr
+                let td
+                let th
+                tr = document.createElement('tr')
+                //nagłówek
+                let array = new Array('marka', 'model', 'cena')
+                array.forEach((el)=>{
+                    th = document.createElement('th')
+                    th.innerText = el
+                    tr.appendChild(th)
+                })
+                tabelka.appendChild(tr)
+                //dane
+                let dane = res[0].rates
+                dane.forEach((el)=>{
+                    tr = document.createElement(tr)
+                    td = document.createElement(td)
+                    td.innerText = el.marka
+                    tr.appendChild(td)
+                    td = document.createElement('td')
+                    td.innerText = el.model
+                    tr.appendChild(td)
+                    td = document.createElement('td')
+                    td.innerText = el.cena
+                    tr.appendChild(td)
+                    tabelka.appendChild(tr)
+                })
+            })
+            
         })
     </script>
 </body>
